@@ -24,6 +24,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
     url(r'^submitAruco/$', views.submitAruco),
+    url(r'^submitAruco/(?P<voterid>[0-9A-Z]+)/submitface/$', views.submitface),
+    url(r'^submitAruco/(?P<voterid>[0-9A-Z]+)/submitface/check/$', views.checkface),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,315 @@
+Help on class face_LBPHFaceRecognizer in module cv2.cv2:
+
+class ffaaccee__LLBBPPHHFFaacceeRReeccooggnniizzeerr(face_FaceRecognizer)
+ |  Method resolution order:
+ |      face_LBPHFaceRecognizer
+ |      face_FaceRecognizer
+ |      Algorithm
+ |      __builtin__.object
+ |  
+ |  Methods defined here:
+ |  
+ |  ____rreepprr____(...)
+ |      x.__repr__() <==> repr(x)
+ |  
+ |  ccrreeaattee(...)
+ |      create([, radius[, neighbors[, grid_x[, grid_y[, threshold]]]]]) -> retval
+ |      .   @param radius The radius used for building the Circular Local Binary Pattern. The greater the
+ |      .   radius, the smoother the image but more spatial information you can get.
+ |      .   @param neighbors The number of sample points to build a Circular Local Binary Pattern from. An
+ |      .   appropriate value is to use `8` sample points. Keep in mind: the more sample points you include,
+ |      .   the higher the computational cost.
+ |      .   @param grid_x The number of cells in the horizontal direction, 8 is a common value used in
+ |      .   publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+ |      .   feature vector.
+ |      .   @param grid_y The number of cells in the vertical direction, 8 is a common value used in
+ |      .   publications. The more cells, the finer the grid, the higher the dimensionality of the resulting
+ |      .   feature vector.
+ |      .   @param threshold The threshold applied in the prediction. If the distance to the nearest neighbor
+ |      .   is larger than the threshold, this method returns -1.
+ |      .   
+ |      .   ### Notes:
+ |      .   
+ |      .   -   The Circular Local Binary Patterns (used in training and prediction) expect the data given as
+ |      .   grayscale images, use cvtColor to convert between the color spaces.
+ |      .   -   This model supports updating.
+ |      .   
+ |      .   ### Model internal data:
+ |      .   
+ |      .   -   radius see LBPHFaceRecognizer::create.
+ |      .   -   neighbors see LBPHFaceRecognizer::create.
+ |      .   -   grid_x see LLBPHFaceRecognizer::create.
+ |      .   -   grid_y see LBPHFaceRecognizer::create.
+ |      .   -   threshold see LBPHFaceRecognizer::create.
+ |      .   -   histograms Local Binary Patterns Histograms calculated from the given training data (empty if
+ |      .   none was given).
+ |      .   -   labels Labels corresponding to the calculated Local Binary Patterns Histograms.
+ |  
+ |  ggeettGGrriiddXX(...)
+ |      getGridX() -> retval
+ |      .   @see setGridX
+ |  
+ |  ggeettGGrriiddYY(...)
+ |      getGridY() -> retval
+ |      .   @see setGridY
+ |  
+ |  ggeettHHiissttooggrraammss(...)
+ |      getHistograms() -> retval
+ |      .
+ |  
+ |  ggeettLLaabbeellss(...)
+ |      getLabels() -> retval
+ |      .
+ |  
+ |  ggeettNNeeiigghhbboorrss(...)
+ |      getNeighbors() -> retval
+ |      .   @see setNeighbors
+ |  
+ |  ggeettRRaaddiiuuss(...)
+ |      getRadius() -> retval
+ |      .   @see setRadius
+ |  
+ |  ggeettTThhrreesshhoolldd(...)
+ |      getThreshold() -> retval
+ |      .   @see setThreshold
+ |  
+ |  sseettGGrriiddXX(...)
+ |      setGridX(val) -> None
+ |      .   @copybrief getGridX @see getGridX
+ |  
+ |  sseettGGrriiddYY(...)
+ |      setGridY(val) -> None
+ |      .   @copybrief getGridY @see getGridY
+ |  
+ |  sseettNNeeiigghhbboorrss(...)
+ |      setNeighbors(val) -> None
+ |      .   @copybrief getNeighbors @see getNeighbors
+ |  
+ |  sseettRRaaddiiuuss(...)
+ |      setRadius(val) -> None
+ |      .   @copybrief getRadius @see getRadius
+ |  
+ |  sseettTThhrreesshhoolldd(...)
+ |      setThreshold(val) -> None
+ |      .   @copybrief getThreshold @see getThreshold
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  ____nneeww____ = <built-in method __new__ of type object>
+ |      T.__new__(S, ...) -> a new object with type S, a subtype of T
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from face_FaceRecognizer:
+ |  
+ |  ggeettLLaabbeellIInnffoo(...)
+ |      getLabelInfo(label) -> retval
+ |      .   @brief Gets string information by label.
+ |      .   
+ |      .   If an unknown label id is provided or there is no label information associated with the specified
+ |      .   label id the method returns an empty string.
+ |  
+ |  ggeettLLaabbeellssBByySSttrriinngg(...)
+ |      getLabelsByString(str) -> retval
+ |      .   @brief Gets vector of labels by string.
+ |      .   
+ |      .   The function searches for the labels containing the specified sub-string in the associated string
+ |      .   info.
+ |  
+ |  pprreeddiicctt(...)
+ |      predict(src) -> label, confidence
+ |      .   @brief Predicts a label and associated confidence (e.g. distance) for a given input image.
+ |      .   
+ |      .   @param src Sample image to get a prediction from.
+ |      .   @param label The predicted label for the given image.
+ |      .   @param confidence Associated confidence (e.g. distance) for the predicted label.
+ |      .   
+ |      .   The suffix const means that prediction does not affect the internal model state, so the method can
+ |      .   be safely called from within different threads.
+ |      .   
+ |      .   The following example shows how to get a prediction from a trained model:
+ |      .   
+ |      .   @code
+ |      .   using namespace cv;
+ |      .   // Do your initialization here (create the cv::FaceRecognizer model) ...
+ |      .   // ...
+ |      .   // Read in a sample image:
+ |      .   Mat img = imread("person1/3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+ |      .   // And get a prediction from the cv::FaceRecognizer:
+ |      .   int predicted = model->predict(img);
+ |      .   @endcode
+ |      .   
+ |      .   Or to get a prediction and the associated confidence (e.g. distance):
+ |      .   
+ |      .   @code
+ |      .   using namespace cv;
+ |      .   // Do your initialization here (create the cv::FaceRecognizer model) ...
+ |      .   // ...
+ |      .   Mat img = imread("person1/3.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+ |      .   // Some variables for the predicted label and associated confidence (e.g. distance):
+ |      .   int predicted_label = -1;
+ |      .   double predicted_confidence = 0.0;
+ |      .   // Get the prediction and associated confidence from the model
+ |      .   model->predict(img, predicted_label, predicted_confidence);
+ |      .   @endcode
+ |  
+ |  pprreeddiicctt__ccoolllleecctt(...)
+ |      predict_collect(src, collector) -> None
+ |      .   @brief - if implemented - send all result of prediction to collector that can be used for somehow custom result handling
+ |      .   @param src Sample image to get a prediction from.
+ |      .   @param collector User-defined collector object that accepts all results
+ |      .   
+ |      .   To implement this method u just have to do same internal cycle as in predict(InputArray src, CV_OUT int &label, CV_OUT double &confidence) but
+ |      .   not try to get "best@ result, just resend it to caller side with given collector
+ |  
+ |  pprreeddiicctt__llaabbeell(...)
+ |      predict_label(src) -> retval
+ |      .   @overload
+ |  
+ |  rreeaadd(...)
+ |      read(filename) -> None
+ |      .   @brief Loads a FaceRecognizer and its model state.
+ |      .   
+ |      .   Loads a persisted model and state from a given XML or YAML file . Every FaceRecognizer has to
+ |      .   overwrite FaceRecognizer::load(FileStorage& fs) to enable loading the model state.
+ |      .   FaceRecognizer::load(FileStorage& fs) in turn gets called by
+ |      .   FaceRecognizer::load(const String& filename), to ease saving a model.
+ |  
+ |  sseettLLaabbeellIInnffoo(...)
+ |      setLabelInfo(label, strInfo) -> None
+ |      .   @brief Sets string info for the specified model's label.
+ |      .   
+ |      .   The string info is replaced by the provided value if it was set before for the specified label.
+ |  
+ |  ttrraaiinn(...)
+ |      train(src, labels) -> None
+ |      .   @brief Trains a FaceRecognizer with given data and associated labels.
+ |      .   
+ |      .   @param src The training images, that means the faces you want to learn. The data has to be
+ |      .   given as a vector\<Mat\>.
+ |      .   @param labels The labels corresponding to the images have to be given either as a vector\<int\>
+ |      .   or a
+ |      .   
+ |      .   The following source code snippet shows you how to learn a Fisherfaces model on a given set of
+ |      .   images. The images are read with imread and pushed into a std::vector\<Mat\>. The labels of each
+ |      .   image are stored within a std::vector\<int\> (you could also use a Mat of type CV_32SC1). Think of
+ |      .   the label as the subject (the person) this image belongs to, so same subjects (persons) should have
+ |      .   the same label. For the available FaceRecognizer you don't have to pay any attention to the order of
+ |      .   the labels, just make sure same persons have the same label:
+ |      .   
+ |      .   @code
+ |      .   // holds images and labels
+ |      .   vector<Mat> images;
+ |      .   vector<int> labels;
+ |      .   // images for first person
+ |      .   images.push_back(imread("person0/0.jpg", CV_LOAD_IMAGE_GRAYSCALE)); labels.push_back(0);
+ |      .   images.push_back(imread("person0/1.jpg", CV_LOAD_IMAGE_GRAYSCALE)); labels.push_back(0);
+ |      .   images.push_back(imread("person0/2.jpg", CV_LOAD_IMAGE_GRAYSCALE)); labels.push_back(0);
+ |      .   // images for second person
+ |      .   images.push_back(imread("person1/0.jpg", CV_LOAD_IMAGE_GRAYSCALE)); labels.push_back(1);
+ |      .   images.push_back(imread("person1/1.jpg", CV_LOAD_IMAGE_GRAYSCALE)); labels.push_back(1);
+ |      .   images.push_back(imread("person1/2.jpg", CV_LOAD_IMAGE_GRAYSCALE)); labels.push_back(1);
+ |      .   @endcode
+ |      .   
+ |      .   Now that you have read some images, we can create a new FaceRecognizer. In this example I'll create
+ |      .   a Fisherfaces model and decide to keep all of the possible Fisherfaces:
+ |      .   
+ |      .   @code
+ |      .   // Create a new Fisherfaces model and retain all available Fisherfaces,
+ |      .   // this is the most common usage of this specific FaceRecognizer:
+ |      .   //
+ |      .   Ptr<FaceRecognizer> model =  FisherFaceRecognizer::create();
+ |      .   @endcode
+ |      .   
+ |      .   And finally train it on the given dataset (the face images and labels):
+ |      .   
+ |      .   @code
+ |      .   // This is the common interface to train all of the available cv::FaceRecognizer
+ |      .   // implementations:
+ |      .   //
+ |      .   model->train(images, labels);
+ |      .   @endcode
+ |  
+ |  uuppddaattee(...)
+ |      update(src, labels) -> None
+ |      .   @brief Updates a FaceRecognizer with given data and associated labels.
+ |      .   
+ |      .   @param src The training images, that means the faces you want to learn. The data has to be given
+ |      .   as a vector\<Mat\>.
+ |      .   @param labels The labels corresponding to the images have to be given either as a vector\<int\> or
+ |      .   a
+ |      .   
+ |      .   This method updates a (probably trained) FaceRecognizer, but only if the algorithm supports it. The
+ |      .   Local Binary Patterns Histograms (LBPH) recognizer (see createLBPHFaceRecognizer) can be updated.
+ |      .   For the Eigenfaces and Fisherfaces method, this is algorithmically not possible and you have to
+ |      .   re-estimate the model with FaceRecognizer::train. In any case, a call to train empties the existing
+ |      .   model and learns a new model, while update does not delete any model data.
+ |      .   
+ |      .   @code
+ |      .   // Create a new LBPH model (it can be updated) and use the default parameters,
+ |      .   // this is the most common usage of this specific FaceRecognizer:
+ |      .   //
+ |      .   Ptr<FaceRecognizer> model =  LBPHFaceRecognizer::create();
+ |      .   // This is the common interface to train all of the available cv::FaceRecognizer
+ |      .   // implementations:
+ |      .   //
+ |      .   model->train(images, labels);
+ |      .   // Some containers to hold new image:
+ |      .   vector<Mat> newImages;
+ |      .   vector<int> newLabels;
+ |      .   // You should add some images to the containers:
+ |      .   //
+ |      .   // ...
+ |      .   //
+ |      .   // Now updating the model is as easy as calling:
+ |      .   model->update(newImages,newLabels);
+ |      .   // This will preserve the old model data and extend the existing model
+ |      .   // with the new features extracted from newImages!
+ |      .   @endcode
+ |      .   
+ |      .   Calling update on an Eigenfaces model (see EigenFaceRecognizer::create), which doesn't support
+ |      .   updating, will throw an error similar to:
+ |      .   
+ |      .   @code
+ |      .   OpenCV Error: The function/feature is not implemented (This FaceRecognizer (FaceRecognizer.Eigenfaces) does not support updating, you have to use FaceRecognizer::train to update it.) in update, file /home/philipp/git/opencv/modules/contrib/src/facerec.cpp, line 305
+ |      .   terminate called after throwing an instance of 'cv::Exception'
+ |      .   @endcode
+ |      .   
+ |      .   @note The FaceRecognizer does not store your training images, because this would be very
+ |      .   memory intense and it's not the responsibility of te FaceRecognizer to do so. The caller is
+ |      .   responsible for maintaining the dataset, he want to work with.
+ |  
+ |  wwrriittee(...)
+ |      write(filename) -> None
+ |      .   @brief Saves a FaceRecognizer and its model state.
+ |      .   
+ |      .   Saves this model to a given filename, either as XML or YAML.
+ |      .   @param filename The filename to store this FaceRecognizer to (either XML/YAML).
+ |      .   
+ |      .   Every FaceRecognizer overwrites FaceRecognizer::save(FileStorage& fs) to save the internal model
+ |      .   state. FaceRecognizer::save(const String& filename) saves the state of a model to the given
+ |      .   filename.
+ |      .   
+ |      .   The suffix const means that prediction does not affect the internal model state, so the method can
+ |      .   be safely called from within different threads.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from Algorithm:
+ |  
+ |  cclleeaarr(...)
+ |      clear() -> None
+ |      .   @brief Clears the algorithm state
+ |  
+ |  eemmppttyy(...)
+ |      empty() -> retval
+ |      .   @brief Returns true if the Algorithm is empty (e.g. in the very beginning or after unsuccessful read
+ |  
+ |  ggeettDDeeffaauullttNNaammee(...)
+ |      getDefaultName() -> retval
+ |      .   Returns the algorithm string identifier.
+ |      .   This string is used as top level xml/yml node tag when the object is saved to a file or string.
+ |  
+ |  ssaavvee(...)
+ |      save(filename) -> None
+ |      .   Saves the algorithm to a file.
+ |      .   In order to make this method work, the derived class must implement Algorithm::write(FileStorage& fs).

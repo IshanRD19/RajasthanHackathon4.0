@@ -32,3 +32,8 @@ class Candidates(models.Model):
 
 class IdDetectionAttempt(models.Model):
     id_proof = models.ImageField(upload_to='media/')
+
+class FaceAttempts(models.Model):
+    picture = models.ImageField(upload_to='faceattempt/')
+
+

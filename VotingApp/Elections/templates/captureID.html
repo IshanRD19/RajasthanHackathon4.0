@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table cellpadding="3">
+    <tr><td colspan="2"><img src="{{ context.Picture.url }}"></td> </tr>
+<tr><th>VoterId</th><td>{{ context.ArUcoID }}</td></tr>
+<tr><th>FirstName</th><td>{{ context.FirstName }}</td></tr>
+<tr><th>LastName</th><td>{{ context.LastName }}</td></tr>
+    <tr><th colspan="2"><h2>IS THIS YOU??</h2></th></tr>
+    <tr><td><a href = "/submitAruco/{{ context.ArUcoID }}/submitface/">Yes</a></td><td><a href="/">No</a></td></tr>
+</table>
+</body>
+</html>
