@@ -5,8 +5,19 @@
     <title>Title</title>
 </head>
 <body>
-{{ for i,j in context.item }}
-
-{{ endfor }}
+<table cellpadding="3">
+    <tr><td colspan="2"><img src="{{ i.Picture.url }}"></td> </tr>
+<tr><th>VoterId</th><td>{{ context.ArUcoID }}</td></tr>
+<tr><th>FirstName</th><td>{{ context.FirstName }}</td></tr>
+<tr><th>LastName</th><td>{{ context.LastName }}</td></tr>
+<tr><th>SSN</th><td>{{ context.SSN }}</td></tr>
+<tr><th>Date of Birth</th><td>{{ context.DOB }}</td></tr>
+<tr><th>Sex</th><td>{{ context.Sex }}</td></tr>
+<tr><th>Contact</th><td>{{ context.Contact }}</td></tr>
+<tr><th>Address</th><td>{{ context.Address }}</td></tr>
+<tr><th>City</th><td>{{ i.City }}</td></tr>
+<tr><th>State</th><td>{{ i.State }}</td></tr>
+<tr><th>Pincode</th><td>{{ i.Pincode }}</td></tr>
+</table>
 </body>
 </html>
