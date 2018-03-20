@@ -3,7 +3,7 @@ from django.http import HttpResponse, StreamingHttpResponse
 # Create your views here.
 
 import cv2
-import ArUco_library as aruco
+#import ArUco_library as aruco
 import base64
 import re
 from django.core.files.base import ContentFile

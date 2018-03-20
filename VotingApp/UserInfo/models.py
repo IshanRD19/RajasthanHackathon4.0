@@ -5,7 +5,7 @@ from django.db import models
 class Voter(models.Model):
     ArUcoID = models.CharField(primary_key=True, max_length=2)
     FirstName = models.CharField(max_length=30)
-    MiddleName = models.CharField(max_length=50)
+    MiddleName = models.CharField(max_length=50, null=True, blank=True)
     LastName = models.CharField(max_length=30)
     SSN = models.CharField(max_length=12)
     Picture = models.ImageField(upload_to='Voter_Pics/', default='Voter_Pics/None/no_image.jpg')
