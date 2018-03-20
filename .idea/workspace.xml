@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="90ad9c1f-d409-44d4-94a9-d78495d1855c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/VotingApp/Elections/ArUco_library.py" afterPath="$PROJECT_DIR$/VotingApp/Elections/ArUco_library.py" />
-      <change beforePath="$PROJECT_DIR$/VotingApp/Elections/templates/some.html" afterPath="$PROJECT_DIR$/VotingApp/Elections/templates/some.html" />
-      <change beforePath="$PROJECT_DIR$/VotingApp/Elections/views.py" afterPath="$PROJECT_DIR$/VotingApp/Elections/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -231,6 +228,14 @@
       <option name="presentableId" value="Default" />
       <updated>1521483229260</updated>
     </task>
+    <task id="LOCAL-00001" summary="initial">
+      <created>1521526907183</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1521526907184</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -284,6 +289,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
