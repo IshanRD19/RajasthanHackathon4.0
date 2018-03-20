@@ -29,3 +29,6 @@ class Candidates(models.Model):
     DOB = models.DateField(auto_now=False)
     Contact = models.CharField(max_length=12)
     RepresentativeOf = models.CharField(max_length=30)
+
+class IdDetectionAttempt(models.Model):
+    id_proof = models.ImageField(upload_to='media/')

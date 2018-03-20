@@ -11,3 +11,6 @@ class Elections(models.Model):
         return str(self.ElectionID)+'-'+str(self.AssociatedWith)
 
 
+
+
+

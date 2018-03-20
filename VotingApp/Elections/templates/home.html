@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Capture image </title>
+</head>
+<body>
+<h1>Step 1: Verification of ID</h1>
+<form id="webcamPageForm" method="POST" enctype="multipart/form-data" action="/submitAruco/">
+{% csrf_token %}
+
+<video id="vid" width="640" height="480" autoplay></video><!-- shows my video stream playing -->
+    <input type="file" name="aruco">
+    <input type="submit" id="SubmitWebCam" name="SubmitWebCam"  class="myButton" value= "Done" ><br><!-- on submit should send user-captured snapshot to views.py-->
+
+</form>
+</body>
+</html>
