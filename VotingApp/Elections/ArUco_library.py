@@ -13,7 +13,7 @@ def detect_ArUco(img):
 	parameters = aruco.DetectorParameters_create()
 	aruco_dict = aruco.Dictionary_get(aruco.DICT_5X5_250)
 	corners, ids, _ = aruco.detectMarkers(gray, aruco_dict, parameters= parameters)
-
+	return ids
 	## function to detect ArUco markers in the image using ArUco library
 	## argument: img is the test image
 	## return: dictionary named Detected_ArUco_markers of the format {ArUco_id_no : corners}, where ArUco_id_no indicates ArUco id and corners indicates the four corner position of the aruco(numpy array)
@@ -23,18 +23,18 @@ def detect_ArUco(img):
 	#							[219, 267],
 	#							[215,167]], dtype=float32)}
 
-	Detected_ArUco_markers = {}
-    ## enter your code here ##
+	# Detected_ArUco_markers = {}
+    # ## enter your code here ##
+    #
+	# # print ids
+	# for i in range(len(ids)):
+	# 	for j in corners[i][0]:
+	# 		j[0] = int(j[0])
+	# 		j[1] = int(j[1])
+	# 	Detected_ArUco_markers[ids[i][0]] = corners[i]
 
-	# print ids
-	for i in range(len(ids)):
-		for j in corners[i][0]:
-			j[0] = int(j[0])
-			j[1] = int(j[1])
-		Detected_ArUco_markers[ids[i][0]] = corners[i]
 
-
-	return Detected_ArUco_markers
+	# return Detected_ArUco_markers
 
 
 def Calculate_orientation_in_degree(Detected_ArUco_markers):
