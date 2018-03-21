@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<body>
+<head>
+  <title>Hello World DApp</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+<script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+<script>
+web3 = new Web3(new Web3.providers.HttpProvider("http://172.26.59.28:8545"));
+abi = JSON.parse('[{"constant":false,"inputs":[{"name":"candidate","type":"bytes32"}],"name":"totalVotesFor","outputs":[{"name":"","type":"uint8"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"candidate","type":"bytes32"}],"name":"validCandidate","outputs":[{"name":"","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"bytes32"}],"name":"votesReceived","outputs":[{"name":"","type":"uint8"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"x","type":"bytes32"}],"name":"bytes32ToString","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"candidateList","outputs":[{"name":"","type":"bytes32"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"candidate","type":"bytes32"}],"name":"voteForCandidate","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"contractOwner","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"inputs":[{"name":"candidateNames","type":"bytes32[]"}],"payable":false,"type":"constructor"}]')
+VotingContract = web3.eth.contract(abi);
+// In your nodejs console, execute contractInstance.address to get the address at which the contract is deployed and change the line below to use your deployed address
+contractInstance = VotingContract.at('0xdccd02a8de8cef0ae8804fe14e5f6e504f9967c5');
+candidates = {"CilaryHlinton": "candidate-1", "ParackBobama": "candidate-2", "TonaldDrump": "candidate-3"};
+vals = {"CilaryHlinton": 0, "ParackBobama": 0, "TonaldDrump": 0};
+arr=[0,0,0]
+myC=[]
+var sum=0;
+$(document).ready(function() {
+
+  candidateNames = Object.keys(candidates);
+  for (var i = 0; i < candidateNames.length; i++) {
+    let name = candidateNames[i];
+    let val = contractInstance.totalVotesFor.call(name).toString();
+    $("#" + candidates[name]).html(val);
+    vals[name]=val;
+    arr[i]=val;
+
+    sum+=parseInt(val);
+  }
+  console.log(sum);
+  console.log(arr);
+   for (var i = 0; i < candidateNames.length; i++) {
+    let name = candidateNames[i];
+    let val = contractInstance.totalVotesFor.call(name).toString();
+
+    vals[name]=parseFloat(val)/sum *100;
+    arr[i]=parseFloat(val)/sum * 100;
+  myC.push({"label":name,"y":arr[i]});
+
+  }
+  console.log(myC);
+  pieS();
+});
+
+ function pieS() {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		text: "Voting Stats"
+	},
+	data: [{
+		type: "pie",
+		startAngle: 240,
+		yValueFormatString: "##0.00\"%\"",
+		indexLabel: "{label} {y}",
+		dataPoints: myC
+	}]
+});
+chart.render();
+
+}
+
+
+</script>
+</head>
+<body class="container">
+  <h1>Voting Done! View Results!</h1>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Candidate</th>
+          <th>Votes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CilaryHlinton</td>
+          <td id="candidate-1"></td>
+        </tr>
+        <tr>
+          <td>ParackBobama</td>
+          <td id="candidate-2"></td>
+        </tr>
+        <tr>
+          <td>TonaldDrump</td>
+          <td id="candidate-3"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+</body>
+</html>

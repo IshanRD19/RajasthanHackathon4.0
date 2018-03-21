@@ -16,6 +16,7 @@ import cStringIO
 import pickle
 
 def index(request):
+    #resetvoters(Voter.objects.all())
     return render(request, 'home_2.html')
 
 
@@ -101,7 +102,22 @@ def checkface(request, voterid):
         # Check the ID if exist
         # profile = getProfile(id_predicted)
     # return HttpResponse(str(voterid)+"-"+str(id_predicted))
-    if str(voterid) == str(id_predicted):
+    person=Voter.objects.get(ArUcoID=voterid)
+    if (person.voted):
+         return HttpResponse("<h1>Already Voted <a href=\"/\">Home Page</a></h1>")
+
+    elif str(voterid) == str(id_predicted):
+        person.voted=True
+        person.save()
+        #return HttpResponse(person.voted)
         return render(request, 'vote.html')
     else:
-        return HttpResponse("<h1>Face maching failed <a href=\"/\">retry</a></h1>")
+        return HttpResponse("<h1>Face matching failed <a href=\"/submitAruco/"+str(voterid)+"/submitface/\">retry</a></h1>")
+
+def votedone(request):
+    return render(request, 'votingdone.html')
+
+def resetvoters(voters):
+    for i in voters:
+        i.voted=False
+        i.save()

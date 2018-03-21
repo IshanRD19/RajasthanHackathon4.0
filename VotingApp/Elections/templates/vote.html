@@ -6,7 +6,7 @@
   <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
 </head>
 <body class="container">
-  <h1>=Voting Application</h1>
+  <h1>Write the name to cast the vote</h1>
   <div class="table-responsive">
     <table class="table table-bordered">
       <thead>
@@ -49,6 +49,7 @@ function voteForCandidate() {
   contractInstance.voteForCandidate(candidateName, {from: web3.eth.accounts[0]}, function() {
     let div_id = candidates[candidateName];
     $("#" + div_id).html(contractInstance.totalVotesFor.call(candidateName).toString());
+    window.location="/votingdone";
   });
 }
 

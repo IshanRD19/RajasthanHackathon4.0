@@ -7,6 +7,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+body{
+background-color:#D3D3D3
+}
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
 <title>WELCOME</title>
@@ -53,8 +56,8 @@ function eu(end,divf,divh)
 <form>
 <table style="width: 50%;height:175px;float:left;">
 
-<tr><th><button class="button button3" type="button"  onclick="ides('p1','p2')" >Vote</button></th>
-<th><button class="button button2" type="button"  onclick="a('p2','p1')">Result</button></th>
+<tr><th><button class="button button3" type="button"  onclick="ides('p1','p2')" style="width:100%;">Vote</button></th>
+<th><button class="button button2" type="button"  onclick="window.location='/votingdone'" style="width:100%">Result</button></th>
 </table>
 </form>
 </div>
@@ -68,7 +71,7 @@ function eu(end,divf,divh)
 <!-- <form method="post" action="/Homedesigner/Registration"> -->
 <form method="post" action="/submitAruco/">
 {% csrf_token %}
-  <table style="width: 50%;height: 700px;float:left;">
+  <table style="width: 50%;float:left;">
 
 
 <div id="container">
@@ -76,8 +79,9 @@ function eu(end,divf,divh)
 
     </video>
 </div>
+
     <input type="hidden" name="theImageData" id="theImageData" value="">
-<p><input type="submit" id="buttonSnap" value="Take screenshot"  onclick="snapshot()" /></p>
+<p><input style="float:right;width:50%;margin-right:25%" class="button button1" type="submit" id="buttonSnap" value="Scan VoterID "  onclick="snapshot()" /></p>
 <p><canvas id="canvas"></canvas></p>
 <p></p>
     <script>
@@ -131,32 +135,6 @@ function snapshot()
 </script>
 
 
-
-
-
-<tr><th><button type="submit" style="background-color: #f44336;
-border: none;border-radius: 3px;
--moz-border-radius: 3px;
--webkit-border-radius: 3px;font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-height: 30px;
-text-transform: uppercase;
-width: 75px;
--webkit-appearance:none;
-color: #f4f4f4; border-color: black;cursor: pointer;">Submit</button></th>
-
-<!-- <th><button type="reset" style="color: black;background-color: white;
-border:double ;border-color: black"><a href="/Homedesigner/jsp/registration.jsp">Reset</button></th></tr> -->
-
-<th><button type="reset" style="background-color:  #555555;
-border: none;border-radius: 3px;
--moz-border-radius: 3px;
--webkit-border-radius: 3px;font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-height: 30px;
-text-transform: uppercase;
-width: 75px;
--webkit-appearance:none;
-color: #f4f4f4; border-color: black;cursor: pointer;"><a href="/registration.html" style="color:white;">Reset</button></th></tr>
-
 </table>
 </form>
 </div>
@@ -174,51 +152,51 @@ color: #f4f4f4; border-color: black;cursor: pointer;"><a href="/registration.htm
 
 
 <!-- Top container -->
-<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+  <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+    <div class="w3-container w3-row">
+      <div class="w3-col s4">
+        <img src="/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
+      </div>
+      <div class="w3-col s8 w3-bar">
+        <span>Welcome, <strong>Mike</strong></span><br>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+      </div>
+    </div>
+    <hr>
+    <div class="w3-container">
+      <h5>Dashboard</h5>
+    </div>
+    <div class="w3-bar-block">
+      <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>Close Menu</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>Overview</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>Views</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>Traffic</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>Geo</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>Orders</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>News</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>General</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>History</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>Settings</a><br><br>
+    </div>
+  </nav>
+
+<!-- Sidebar/menu -->
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4;">
   <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>Menu</button>
   <span class="w3-bar-item w3-right">Logo</span>
 </div>
-
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-  <div class="w3-container w3-row">
-    <div class="w3-col s4">
-      <img src="/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
-    </div>
-    <div class="w3-col s8 w3-bar">
-      <span>Welcome, <strong>Mike</strong></span><br>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
-    </div>
-  </div>
-  <hr>
-  <div class="w3-container">
-    <h5>Dashboard</h5>
-  </div>
-  <div class="w3-bar-block">
-    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>Close Menu</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>Overview</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>Views</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>Traffic</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>Geo</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>Orders</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>News</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>General</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>History</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>Settings</a><br><br>
-  </div>
-</nav>
 
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+<div class="w3-main" style="margin-left:10px;margin-top:43px;">
 
   <!-- Header -->
-  <header class="w3-container" style="padding-top:22px">
+  <header class="w3-container" style="padding-top:22px;">
     <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
   </header>
 
@@ -435,7 +413,6 @@ color: #f4f4f4; border-color: black;cursor: pointer;"><a href="/registration.htm
     <h4>FOOTER</h4>
     <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
   </footer>
-
   <!-- End page content -->
 </div>
 
@@ -473,6 +450,13 @@ function w3_close() {
 
 </div>
 </div>
+
+
+
+<script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+
+
 
 
 
@@ -576,3 +560,5 @@ function w3_close() {
     color: white;
 }
 </style>
+
+
